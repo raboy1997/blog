@@ -1,0 +1,28 @@
+<% if comment.present? %>
+    <div id="comment_<%= comment.id %>" class="row single-comment vertical-align">
+      <div class="comment clearfix">
+        <div class="comment_content">
+
+          <p> Author: <%= comment.user.email%></p>
+          <p class="date">
+            <%= comment.body %>
+            <% if current_user?(comment.user)%>
+                | <%= link_to 'x',[comment.post, comment], method: :delete,
+                              id: "#{comment.id}_delete", remote: true,
+                              title: 'Delete comment', rel: 'tooltip' %> |
+                <%= link_to 'edit' , edit_post_comment_path(comment.post , comment)%>
+            <% end %>
+          </p>
+
+        </div>
+
+        <div id="comment">
+          <div id="comments_list">
+            <%= render comment.sub_comments %>
+          </div>
+          <%= render 'sub_comments/sub_form' , comment: comment  %>
+        </div>
+        <hr>
+      </div>
+    </div>
+<% end %>

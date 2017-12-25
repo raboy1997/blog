@@ -1,0 +1,14 @@
+<div class="post_wrapper">
+  <% @posts.each do |post| %>
+
+      <p><%= image_tag post.image , size: '200x200' %></p>
+      <h1 class="title"><%= link_to post.title, post %></h1>
+      <p> user: <%= post.user.email %></p>
+      <p> post type: <%= post.post_type %></p>
+      <p class="date">created: <%= post.created_at.strftime("%B %d, %Y") %></p>
+      <hr>
+
+<% end %>
+
+<%= paginate @posts %>
+</div>
