@@ -1,8 +1,0 @@
-<%= form_for  @comment, url: update_comment_path(comment_id: @comment.id, post_id: @comment.post_id)  do |f| %>
-
-    <div class="post_wrapper">
-      <%= f.text_area :body %>
-      <p><%= f.submit 'Update' %></p>
-    </div>
-
-<% end %>

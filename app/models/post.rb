@@ -2,7 +2,10 @@ class Post < ApplicationRecord
   mount_uploader :image , ImageUploader
 
   belongs_to :user
-  has_many :comments
+  has_many :comments, as: :commentable
 
-  Post_TYPES = [ "article", "event"]
+  validates :title, :image, :body, presence: true
+
+
+
 end

@@ -4,6 +4,8 @@ class CreatePosts < ActiveRecord::Migration[5.1]
       t.string :title
       t.string :body
       t.json :image
+      t.string :type
+      t.datetime :start_event_at
 
       t.timestamps
     end

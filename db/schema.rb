@@ -10,39 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171225210101) do
+ActiveRecord::Schema.define(version: 20171226131257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.string "body"
-    t.bigint "post_id"
-    t.bigint "user_id"
+    t.string "commentable_type"
+    t.integer "commentable_id"
+    t.integer "user_id"
+    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_comments_on_post_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "body"
     t.json "image"
+    t.string "type"
+    t.datetime "start_event_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.string "post_type"
-  end
-
-  create_table "sub_comments", force: :cascade do |t|
-    t.string "body"
-    t.bigint "user_id"
-    t.bigint "comment_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_sub_comments_on_comment_id"
-    t.index ["user_id"], name: "index_sub_comments_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

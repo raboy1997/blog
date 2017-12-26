@@ -1,11 +1,11 @@
 <div class="box">
-  <%= form_for(post) do |f| %>
-      <% if post.errors.any? %>
+  <%= form_for(@event) do |f| %>
+      <% if @event.errors.any? %>
           <div id="error_explanation">
-            <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+            <h2><%= pluralize(@event.errors.count, "error") %> prohibited this post from being saved:</h2>
 
             <ul>
-              <% post.errors.full_messages.each do |message| %>
+              <% @event.errors.full_messages.each do |message| %>
                   <li><%= message %></li>
               <% end %>
             </ul>
@@ -26,6 +26,13 @@
         <%= f.label :body, :class => 'control-label col-lg-2' %>
         <%= f.text_area :body, :class => 'form-control' %>
       </div>
+
+      <div class="form-group">
+        <%= f.label :start_event_at, :class => 'control-label col-lg-2' %>
+        <%= f.datetime_field :start_event_at %>
+      </div>
+
+
 
       <div class="col-lg-10">
         <%= f.submit 'create', class: 'btn' %>

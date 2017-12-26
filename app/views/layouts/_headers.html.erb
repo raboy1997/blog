@@ -6,7 +6,10 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <% if user_signed_in? %>
         <ul class="nav navbar-nav pull-right active">
-          <li><%= link_to "add", new_post_path %></li>
+          <li><%= link_to "Posts", posts_path %></li>
+          <li><%= link_to "Events", events_path %></li>
+          <li><%= link_to "Add Event", new_event_path %></li>
+          <li><%= link_to "Add Post", new_post_path %></li>
           <li class="active">  <%= link_to "Exit", destroy_user_session_path, :method => :delete %> </li>
         </ul>
 

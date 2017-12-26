@@ -2,9 +2,19 @@ Rails.application.routes.draw do
 
   root 'posts#index'
   devise_for :users
+
   resources :posts do
     resources :comments
   end
+
+  resources :events do
+    resources :comments
+  end
+
+  resources :comments do
+    resources :comments
+  end
+
 
   post '/create/sub_comment' , to: 'sub_comments#create' , as: 'create_sub_comment'
   # get '/comment/:id/edit' , to: 'comments#edit' , as: 'comment_edit'

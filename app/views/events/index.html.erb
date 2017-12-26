@@ -1,13 +1,13 @@
 <div class="post_wrapper">
-    <% @posts.each do |post| %>
+    <% @events.each do |post| %>
 
         <p><%= image_tag post.image , size: '200x200' %></p>
         <h1 class="title"><%= link_to post.title, post %></h1>
         <p> user: <%= post.user.email %></p>
-        <p class="date">created: <%= post.created_at.strftime("%B %d, %Y") %></p>
+        <p class="date">event start at: <%= post.start_event_at.strftime("%B %d, %Y") %></p>
         <hr>
 
   <% end %>
 
-  <%= paginate @posts %>
+  <%= paginate @events %>
 </div>

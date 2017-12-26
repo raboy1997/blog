@@ -1,0 +1,24 @@
+<div id="post_content">
+  <h1 class="title"><%= @event.title %></h1>
+  <p><%= image_tag @event.image , size: '400x400'%></p>
+  <p>Author: <%= @event.user.email %></p>
+  <p class="date">
+    Submitted <%= time_ago_in_words(@event.created_at) %> Ago
+    <% if current_user?(@event.user) %>
+        | <%= link_to 'Edit', edit_event_path(@event) %> |
+        <%= link_to 'Delete', post_path(@event), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+
+  </p>
+  <p class="body"><%= @event.body %></p>
+  <hr>
+  <%= form_for [@event, Comment.new] do |f| %>
+      <%= f.text_area :body, placeholder: "Add a comment" %><br/>
+      <%= f.submit "Add Comment" %>
+  <% end %>
+
+  <ul>
+    <%= render(partial: 'comments/comment', collection: @event.comments) %>
+  </ul>
+
+</div>

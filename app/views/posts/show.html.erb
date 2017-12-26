@@ -2,7 +2,6 @@
   <h1 class="title"><%= @post.title %></h1>
   <p><%= image_tag @post.image , size: '400x400'%></p>
   <p>Author: <%= @post.user.email %></p>
-  <p> post type: <%= @post.post_type %></p>
   <p class="date">
     Submitted <%= time_ago_in_words(@post.created_at) %> Ago
     <% if current_user?(@post.user) %>
@@ -14,13 +13,14 @@
   <p class="body"><%= @post.body %></p>
   <hr>
 
-  <div id="comments_list">
-    <h2><%= @post.comments.count %> Comments</h2>
-    <%= render @post.comments %>
-  </div>
+  <h3>Comments</h3>
 
-  <div class="comment_form">
-    <h3>Add a comment:</h3>
-    <%= render "comments/form" %>
-  </div>
+  <%= form_for [@post, Comment.new] do |f| %>
+      <%= f.text_area :body, placeholder: "Add a comment" %><br/>
+      <%= f.submit "Add Comment" %>
+      <% end %>
+
+  <ul>
+    <%= render(partial: 'comments/comment', collection: @post.comments) %>
+  </ul>
 </div>

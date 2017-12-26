@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
+
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -12,7 +14,6 @@ class PostsController < ApplicationController
 
   def show
     @new_comment = Comment.new
-    @new_sub_comment = SubComment.new
   end
 
   def create

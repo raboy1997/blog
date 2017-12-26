@@ -1,6 +1,0 @@
-<%= form_for  @sub_comment, url: update_sub_comment_path(post_id: @sub_comment.comment.post)  do |f| %>
-    <div class="post_wrapper">
-      <%= f.text_area :body %>
-      <p><%= f.submit 'Update' %></p>
-    </div>
-<% end %>
