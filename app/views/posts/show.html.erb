@@ -1,6 +1,6 @@
 <div id="post_content">
   <h1 class="title"><%= @post.title %></h1>
-  <p><%= image_tag @post.image.url , size: '400x400'%></p>
+  <p><%= image_tag @post.image , size: '400x400'%></p>
   <p>Author: <%= @post.user.email %></p>
   <p> post type: <%= @post.post_type %></p>
   <p class="date">
