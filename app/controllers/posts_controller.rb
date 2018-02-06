@@ -12,6 +12,10 @@ class PostsController < ApplicationController
     @users = User.all
   end
 
+  def static
+
+  end
+
   def show
     @new_comment = Comment.new
   end
