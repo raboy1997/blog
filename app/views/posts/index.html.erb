@@ -1,10 +1,10 @@
 <div class="post_wrapper">
     <% @posts.each do |post| %>
         <% next if post.type == "Event" %>
-        <p><%= image_tag post.image , size: '200x200' %></p>
+        <p><%= image_tag(post.image_url, size: '200x200') %></p>
         <h1 class="title"><%= link_to post.title, post %></h1>
-        <p> user: <%= post.user.email %></p>
-        <p class="date">created: <%= post.created_at.strftime("%B %d, %Y") %></p>
+        <p> користувач: <%= post.user.email %></p>
+        <p class="date"> створено: <%= post.created_at.strftime("%B %d, %Y") %></p>
         <hr>
 
   <% end %>
